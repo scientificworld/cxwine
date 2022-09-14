@@ -46,3 +46,5 @@ function cxwine() {
 	echo "Starting..."
 	"$cxapp/wine" "$@"
 }
+alias cxswitch="_cxrun default"
+alias cxfuck="killall -9 wine32on64-preloader wine64-preloader"
