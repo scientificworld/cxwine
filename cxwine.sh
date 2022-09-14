@@ -40,8 +40,8 @@ function cxwine() {
 		cxcreate "$n" "$t"
 		cxswitch "$n"
 		cp -af "$f"/* "$cxpath/$n/drive_c/users/crossover"
-		trash "$f"
-		unset n t
+		mv -f "$f" "$HOME/.Trash"
+		unset n t f
 	fi
 	echo "Starting..."
 	"$cxapp/wine" "$@"
