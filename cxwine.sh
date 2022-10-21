@@ -28,7 +28,7 @@ function cxwine() {
 		echo "Default bottle not set!"
 		return
 	fi
-	rm "$cxpath/default/.eval"
+	rm "$cxpath/default/.eval" >/dev/null 2>&1
 	echo "Starting..."
 	"$cxapp/wine" "$@"
 }
