@@ -19,32 +19,17 @@ function cxcreate() {
 		set "$1" "win7"
 	fi
 	"$cxapp/cxbottle" --bottle "$1" --create --template "$2"
-	date +%s > "$cxpath/$1/.create_timestamp"
-	echo -n "$2" > "$cxpath/$1/.type"
 }
 alias cxdelete="_cxrun delete"
+alias cxswitch="_cxrun default"
 function cxwine() {
 	if [ ! -h "$cxpath/default" ]
 	then
 		echo "Default bottle not set!"
 		return
 	fi
-	if [ $[$(date +%s)-$(cat "$cxpath/default/.create_timestamp")] -gt $[10*24*3600] ]
-	then
-		echo "Bottle is outdated! Updating..."
-		n="$(basename "$(readlink "$cxpath/default")")"
-		t="$(cat "$cxpath/$n/.type")"
-		f="$(mktemp -d)"
-		cp -af "$cxpath/$n/drive_c/users/crossover/Application Data" "$cxpath/$n/drive_c/users/crossover/AppData" "$f"
-		cxdelete "$n"
-		cxcreate "$n" "$t"
-		cxswitch "$n"
-		cp -af "$f"/* "$cxpath/$n/drive_c/users/crossover"
-		mv -f "$f" "$HOME/.Trash"
-		unset n t f
-	fi
+	rm "$cxpath/default/.eval"
 	echo "Starting..."
 	"$cxapp/wine" "$@"
 }
-alias cxswitch="_cxrun default"
 alias cxfuck="killall -9 wine32on64-preloader wine64-preloader"
