@@ -37,3 +37,31 @@ If your application stucks, you can press Ctrl+C to terminate the program forcib
 You can also use `cxdelete` to delete existing bottle.
 
 Enjoy it!
+
+### Bottle types
+
+Here is a list of the types of bottles you can create.
+
+- win98
+
+- win2000
+
+- winxp
+
+- winxp\_64
+
+- winvista
+
+- winvista\_64
+
+- win7
+
+- win7\_64
+
+- win8
+
+- win8\_64
+
+- win10
+
+- win10\_64
